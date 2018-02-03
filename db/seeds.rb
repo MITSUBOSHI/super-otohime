@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+["shared", "#{Rails.env.downcase}"].each do |dir|
+  Dir.glob(File.join(Rails.root, 'db', 'seeds', dir, '*.rb')).each do |file|
+    load(file)
+  end
+end
