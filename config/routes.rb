@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       resources :songs
-      patch '/room', to: 'room#update'
+      put '/room', to: 'room#update'
     end
   end
 end
