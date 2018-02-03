@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180203171913) do
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "device_code"
+    t.string "device_code", default: "", null: false
     t.bigint "toilets_id"
     t.bigint "room_state_id"
     t.datetime "created_at", null: false
