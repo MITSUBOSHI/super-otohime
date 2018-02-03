@@ -7,7 +7,8 @@ module Api
         if !params.blank?
           room = Room.where(device_code: params[:device_code])
           if room.present?
-            room.update(room_state_id: params[:state])
+            state_id = RoomState.where(is_used: params[:state]).first[:id]
+            room.update(room_state_id: state_id)
             render json: { status: :created }
           else
             render json: { status: :unprocessable_entity }

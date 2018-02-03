@@ -3,6 +3,7 @@ module Api
     class SongsController < ApplicationController
 
       def index
+        raise
         base_song_id = Toilet.find(params[:toilets_id])[:current_base_song_id]
         song = EffectSong
           .where(base_song_id: base_song_id)
