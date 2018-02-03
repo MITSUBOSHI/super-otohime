@@ -5,21 +5,34 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  encoding: utf8
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  username: <%= ENV.fetch("DEV_USERNAME", "root") %>
+  password: <%= ENV.fetch("DEV_PASSWORD", "") %>
+  host: <%= ENV.fetch("DEV_HOST", "localhost") %>
+  port: <%= ENV.fetch("DEV_PORT", "3306") %>
+  database: super-otohime-dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  username: <%= ENV.fetch("TEST_USERNAME", "root") %>
+  password: <%= ENV.fetch("TEST_PASSWORD", "") %>
+  host: <%= ENV.fetch("TEST_HOST", "localhost") %>
+  port: <%= ENV.fetch("TEST_PORT", "3306") %>
+  database: super-otohime-test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  username: <%= ENV["PRODUCTION_USERNAME"] %>
+  password: <%= ENV["PRODUCTION_PASSWORD"] %>
+  host: <%= ENV["PRODUCTION_HOST"] %>
+  port: <%= ENV["PRODUCTION_PORT"] %>
+  database: super-otohime-production
