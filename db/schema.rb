@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20180203171913) do
 
   create_table "base_songs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", default: "", null: false
+    t.string "song_code", default: "", null: false
     t.boolean "has_effect", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

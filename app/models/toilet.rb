@@ -3,18 +3,16 @@ class Toilet < ApplicationRecord
   def self.return_proper_level(id)
     formula = current_num_of_using_rooms(id).to_f / sum_rooms(id).to_f
     case formula
-    when formula == 0
+    when 0 then
       level = 0
-    when formula <= 0.25
+    when (0..0.25) then
       level = 1
-    when formula <= 0.5
+    when (0.26..0.5) then
       level = 2
-    when formula <= 0.75
+    when (0.5..0.75)  then
       level = 3
-    when formula = 1.0
+    when 1.0 then
       level = 4
-    else
-      level = 0
     end
     level
   end
