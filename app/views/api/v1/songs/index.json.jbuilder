@@ -1,2 +1,2 @@
-json.song_code  @path
+json.song_code  @code
 json.level      @level
