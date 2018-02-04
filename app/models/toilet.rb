@@ -1,15 +1,17 @@
 class Toilet < ApplicationRecord
+  has_many :toilets_base_songs
+  has_many :base_songs, through: :toilets_base_songs
 
   def self.return_proper_level(id)
     formula = current_num_of_using_rooms(id).to_f / sum_rooms(id).to_f
     case formula
     when 0 then
       level = 0
-    when (0..0.25) then
+    when (0..0.3) then
       level = 1
-    when (0.26..0.5) then
+    when (0.31..0.6) then
       level = 2
-    when (0.5..0.75)  then
+    when (0.61..0.99)  then
       level = 3
     when 1.0 then
       level = 4
